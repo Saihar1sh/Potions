@@ -1,0 +1,9 @@
+[submodule "Assets/ScriptSmith/ScriptSmith"]
+	path = Assets/ScriptSmith/ScriptSmith
+	url = https://github.com/Saihar1sh/ScriptSmith.git
+[submodule "Assets/--force"]
+	path = Assets/--force
+	url = https://github.com/Saihar1sh/ScriptSmith.git
+[submodule "Assets/ScriptSmith"]
+	path = Assets/ScriptSmith
+	url = https://github.com/Saihar1sh/ScriptSmith.git
