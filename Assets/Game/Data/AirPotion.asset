@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9120f1bbf92ee8b4bb81ce40f8ca3c9a, type: 3}
+  m_Name: AirPotion
+  m_EditorClassIdentifier: 
+  potionName: Air Potion
+  potionIcon: {fileID: 21300000, guid: 28c9f85334b01ce409bbc99c2d4cceaf, type: 3}
+  potionScoreValue: 20
+  potionDescription: Use this potion to fly in air.

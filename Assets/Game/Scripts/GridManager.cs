@@ -2,21 +2,26 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Arixen.ScriptSmith;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
-public class GridManager : MonoBehaviour
+public class GridManager : MonoGenericLazySingleton<GridManager>
 {
     public Transform cellsParent;
-    
-    public CellView[] potions;
 
-    private void Awake()
+    [SerializeField] private CellView[] gridCells;
+
+    protected override void Awake()
     {
-        potions = GetComponentsInChildren<CellView>();
+        base.Awake();
+        gridCells = cellsParent.GetComponentsInChildren<CellView>();
     }
-
-    private void Start()
+    
+    public CellView GetRandomCell()
     {
-        
+        var index = Random.Range(0,gridCells.Length);
+        return gridCells[index];
     }
 }

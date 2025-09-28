@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6d53013a46777439720a17b2785602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cellView: {fileID: 5115555771558099654}
 --- !u!1 &4883805467853568601
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7761272e8ef8d47b4ec90cde044741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cellImage: {fileID: 1651754310015738463}
 --- !u!222 &780192280352684645
 CanvasRenderer:
   m_ObjectHideFlags: 0
