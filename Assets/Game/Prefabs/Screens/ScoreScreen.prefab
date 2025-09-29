@@ -106,10 +106,10 @@ RectTransform:
   - {fileID: 5550039201980151820}
   m_Father: {fileID: 7731049034109936259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.26500002, y: 0.3833542}
-  m_AnchorMax: {x: 0.73422223, y: 0.80089587}
-  m_AnchoredPosition: {x: 0.09994507, y: -2.5509338}
-  m_SizeDelta: {x: -0.19995, y: -4.5706}
+  m_AnchorMin: {x: 0.26518512, y: 0.38321584}
+  m_AnchorMax: {x: 0.73422223, y: 0.798377}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.00000029802322, y: 0.000004529953}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3074395721974417182
 GameObject:
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 6426077159707483357}
   - component: {fileID: 2109707924924358994}
   m_Layer: 5
-  m_Name: ExitButton
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -297,10 +297,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exit
+  m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 68dcbfe33198266498d1e657d335bb52, type: 2}
+  m_sharedMaterial: {fileID: -5969890327448845118, guid: 68dcbfe33198266498d1e657d335bb52, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 59.8
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -375,7 +375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7731049034109936259}
-  - component: {fileID: 6173561011426389038}
+  - component: {fileID: 3539169275644004511}
   m_Layer: 5
   m_Name: ScoreScreen
   m_TagString: Untagged
@@ -405,7 +405,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6173561011426389038
+--- !u!114 &3539169275644004511
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -414,10 +414,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5565822127669571822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcb064b80ae729d43b5f01590b381815, type: 3}
+  m_Script: {fileID: 11500000, guid: 58c34683511376749a3938e5f8d2e867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   screenType: 3
+  showHUD: 0
+  shouldInitByDefault: 1
+  leaderboardEntryViewPrefabRef:
+    m_AssetGUID: a464c9b8fab19014fad4aeac0044b965
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  backButton: {fileID: 2109707924924358994}
+  leaderboardEntryContainer: {fileID: 5550039201980151820}
 --- !u!1 &8635429165024774982
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,7 +436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5550039201980151820}
-  - component: {fileID: 9058204274319856512}
+  - component: {fileID: 6488742068667556742}
   m_Layer: 5
   m_Name: LeaderboardVerticalLayout
   m_TagString: Untagged
@@ -449,19 +458,19 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2313344379178605886}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: -0.00000006024474, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &9058204274319856512
+--- !u!114 &6488742068667556742
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8635429165024774982}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
@@ -469,13 +478,13 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Top: 50
+    m_Bottom: 50
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 20
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0

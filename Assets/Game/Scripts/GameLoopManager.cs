@@ -6,39 +6,56 @@ using Arixen.ScriptSmith;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class GameLoopManager : MonoBehaviour
+public class GameLoopManager : MonoGenericLazySingleton<GameLoopManager>
 {
-    [SerializeField] private int spawnCount = 10;
-    [SerializeField] private bool infiniteSpawn = true;
-    [SerializeField] private int spawnInterval = 5;
+    public int Score { get; private set; }
 
-    [SerializeField] private PotionsCollectionScriptable potionCollectionScriptable;
 
-    private float spawnTimer = 0;
+    protected override void Awake()
+    {
+        base.Awake();
+        EventBusService.Subscribe<OnActiveScreenChangedEvent>(OnActiveScreenChanged);
+        EventBusService.Subscribe<GameStartedEvent>(OnGameStarted);
+        EventBusService.Subscribe<PotionCollectedEvent>(OnPotionCollected);
+        EventBusService.Subscribe<FirebaseSyncStartedEvent>(OnFirebaseSyncStarted);
+        EventBusService.Subscribe<FirebaseSyncCompletedEvent>(OnFirebaseSyncCompleted);
+    }
+
+    private void OnGameStarted(GameStartedEvent e)
+    {
+        
+        Score = 0;
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        EventBusService.UnSubscribe<OnActiveScreenChangedEvent>(OnActiveScreenChanged);
+    }
+    private void OnPotionCollected(PotionCollectedEvent e)
+    {
+        EventBusService.InvokeEvent(new ScoreUpdatedEvent(){ newScore = Score+e.scoreValue, scoreDelta = e.scoreValue});
+
+        Score += e.scoreValue;
+    }
+
+    private void OnFirebaseSyncStarted(FirebaseSyncStartedEvent e)
+    {
+        Debug.Log($"Started sync -- {e.operationType}");
+    }
+
+    private void OnFirebaseSyncCompleted(FirebaseSyncCompletedEvent e)
+    {
+        Debug.Log($"Completed sync -result: {e.success} -- {e.operationType}");
+    }
 
     private void Start()
     {
-        EventBusService.InvokeEvent(new ShowScreenEvent(ScreenType.GameScreen));
-
-         PotionSpawnLoop();
+        EventBusService.InvokeEvent(new ShowScreenEvent(ScreenType.StartScreen));
     }
 
-    private async Task PotionSpawnLoop()
+    private void OnActiveScreenChanged(OnActiveScreenChangedEvent e)
     {
-        while (infiniteSpawn || spawnCount > 0)
-        {
-            await SpawnPotionsRoutine();
-        }
-    }
-
-    private async Task SpawnPotionsRoutine()
-    {
-        var cell = GridManager.Instance.GetRandomCell();
-        var index = Random.Range(0, potionCollectionScriptable.potionScriptableList.Count);
-        var randomPotionIcon = potionCollectionScriptable.potionScriptableList[index].potionIcon;
-        cell.Init(randomPotionIcon);
-        await Task.Delay(TimeSpan.FromSeconds(spawnInterval));
-
-        if (!infiniteSpawn) spawnCount--;
+        Debug.Log($"screenType: {e.screenType}");
     }
 }

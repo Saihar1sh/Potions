@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 [CreateAssetMenu(fileName = "New PotionScriptable", menuName = "ScriptableObjects/PotionScriptable", order = 1)]
 public class PotionScriptable : ScriptableObject
@@ -9,6 +8,7 @@ public class PotionScriptable : ScriptableObject
     public string potionName;
     public Sprite potionIcon;
     public int potionScoreValue;
+    [Range(0f, 1f)] public float potency; // Potency from 0 to 1
     public string potionDescription;
 }
 

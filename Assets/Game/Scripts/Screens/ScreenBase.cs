@@ -8,7 +8,9 @@ public class ScreenBase : MonoBehaviour
    public ScreenType screenType;
 
    public bool showHUD;
+   public bool shouldInitByDefault;
    
+   public virtual void Init() { }
 }
 
 public enum ScreenType

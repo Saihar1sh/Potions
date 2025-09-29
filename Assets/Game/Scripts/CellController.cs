@@ -11,6 +11,5 @@ public class CellController : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         cellView.OnClick();
-        Debug.Log("OnPointerDown");
     }
 }

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9120f1bbf92ee8b4bb81ce40f8ca3c9a, type: 3}
   m_Name: WaterPotion
   m_EditorClassIdentifier: 
+  potionType: 0
   potionName: Water Potion
   potionIcon: {fileID: 21300000, guid: aab1b5555e3c2ff4c8326a1b6aeed156, type: 3}
-  potionScoreValue: 20
+  potionScoreValue: 34
+  potency: 0.662
   potionDescription: Use this potion to fly in air.

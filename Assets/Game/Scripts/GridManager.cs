@@ -12,16 +12,31 @@ public class GridManager : MonoGenericLazySingleton<GridManager>
     public Transform cellsParent;
 
     [SerializeField] private CellView[] gridCells;
-
+    
     protected override void Awake()
     {
         base.Awake();
         gridCells = cellsParent.GetComponentsInChildren<CellView>();
+        EventBusService.Subscribe<GameStartedEvent>(OnGameStarted);
     }
-    
+
+    private void OnGameStarted(GameStartedEvent e)
+    {
+        ResetAllCells();
+    }
+
+    private void ResetAllCells()
+    {
+        for (var index = 0; index < gridCells.Length; index++)
+        {
+            var gridCell = gridCells[index];
+            gridCell.Init(index);
+        }
+    }
+
     public CellView GetRandomCell()
     {
-        var index = Random.Range(0,gridCells.Length);
-        return gridCells[index];
+        var randomIndex = Random.Range(0, gridCells.Length);
+        return gridCells[randomIndex];
     }
 }

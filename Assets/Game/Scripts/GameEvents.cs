@@ -1,12 +1,16 @@
+using System.Collections.Generic;
 using Arixen.ScriptSmith;
 
 public class ShowScreenEvent : IGameEventData
 {
     public ScreenType screenType;
+    
+    public bool hideAllPreviousScreens = false;
 
-    public ShowScreenEvent(ScreenType screenType)
+    public ShowScreenEvent(ScreenType screenType, bool hideAllPreviousScreens = false)
     {
         this.screenType = screenType;
+        this.hideAllPreviousScreens = hideAllPreviousScreens;
     }
 }
 
@@ -15,6 +19,16 @@ public class HideScreenEvent : IGameEventData
     public ScreenType screenType;
 
     public HideScreenEvent(ScreenType screenType)
+    {
+        this.screenType = screenType;
+    }
+}
+
+public class OnActiveScreenChangedEvent : IGameEventData
+{
+    public ScreenType screenType;
+
+    public OnActiveScreenChangedEvent(ScreenType screenType)
     {
         this.screenType = screenType;
     }
@@ -63,16 +77,26 @@ public class ScoreUpdatedEvent : IGameEventData
 
 public class LeaderboardLoadedEvent : IGameEventData
 {
-    public LeaderboardEntry[] topScores;
+    public List<LeaderboardEntry> topScores;
 }
-
+#region FireBase
 public class FirebaseSyncStartedEvent : IGameEventData
 {
-    public string operationType;
+    public FirebaseSyncOperation operationType;
 }
 
 public class FirebaseSyncCompletedEvent : IGameEventData
 {
     public bool success;
-    public string operationType;
+    public FirebaseSyncOperation operationType;
 }
+
+public enum FirebaseSyncOperation
+{
+    SaveUserData,
+    LoadUserData,
+    SaveToLeaderboard,
+    LoadLeaderboard
+}
+
+#endregion

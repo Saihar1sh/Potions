@@ -1,19 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using Arixen.ScriptSmith;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CellView : MonoBehaviour
 {
     [SerializeField] private Image cellImage;
-    
-    public void Init(Sprite sprite)
+
+    private PotionScriptable currentPotionScriptable;
+
+    public int Index { get; private set; }
+
+    public void Init(int index)
     {
-        cellImage.sprite = sprite;
+        Index = index;
+        ClearPotion();
+    }
+
+    public void SetPotion(PotionScriptable potionScriptable)
+    {
+        currentPotionScriptable = potionScriptable;
+        if (cellImage != null && potionScriptable.potionIcon != null)
+        {
+            cellImage.sprite = potionScriptable.potionIcon;
+        }
     }
 
     public void OnClick()
     {
-        cellImage.sprite = null;
+        EventBusService.InvokeEvent(new PotionCollectedEvent()
+        {
+            potionType = currentPotionScriptable.potionType,
+            scoreValue = currentPotionScriptable.potionScoreValue,
+            timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+        });
+
+        ClearPotion();
+    }
+
+    public void ClearPotion()
+    {
+        currentPotionScriptable = null;
+        if (cellImage != null)
+        {
+            cellImage.sprite = null;
+        }
     }
 }

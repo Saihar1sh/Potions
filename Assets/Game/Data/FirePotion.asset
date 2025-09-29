@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9120f1bbf92ee8b4bb81ce40f8ca3c9a, type: 3}
   m_Name: FirePotion
   m_EditorClassIdentifier: 
+  potionType: 1
   potionName: Fire Potion
   potionIcon: {fileID: 21300000, guid: e9c9d101d080d0041974e4902994e93d, type: 3}
   potionScoreValue: 115
+  potency: 0
   potionDescription: Blast the flames
